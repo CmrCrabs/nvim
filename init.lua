@@ -13,4 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("vim-opts")
 require("lazy").setup("plugins")
+-- vim.cmd("colorscheme pywal")
+-- vim.cmd("call timer_start( 2000, { id -> execute( 'colorscheme pywal' ) }, { 'repeat': -1 } )")
 
