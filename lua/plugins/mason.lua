@@ -12,7 +12,8 @@ return {
         ensure_installed = {
           -- LSPs
           "lua_ls",
-          "tsserver",
+          "ts_ls",
+          "tinymist",
           "rust_analyzer",
           "omnisharp",
         }

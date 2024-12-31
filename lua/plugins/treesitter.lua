@@ -27,6 +27,7 @@ return
               "jsdoc",
               "json",
               "jsonc",
+              "typst",
               "lua",
               "luadoc",
               "luap",
