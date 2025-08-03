@@ -31,9 +31,14 @@ return {
       capabilities = capabilities,
     })
 
-    --lspconfig.tinymist.setup({
-    --    capabilities = capabilities,
-    --})
+    --require("lspconfig")["tinymist"].setup {
+    --  settings = {
+    --      formatterMode = "typstyle",
+    --      exportPdf = "onType",
+    --      semanticTokens = "disable",
+    --      offset_encoding = "utf-8",
+    --  }
+    --}
 
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
