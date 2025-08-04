@@ -28,7 +28,7 @@
       pkgs.runCommand "initFolder" {
       } ''
         mkdir -p $out
-             cp -r ${self}/config/nvim $out/
+				 cp -r ${self}/config/nvim $out/
       '';
 
     nvimWrap = pkgs.writeShellApplication {
@@ -36,6 +36,7 @@
       runtimeInputs = [pkgs.neovim];
       text = ''
         exec nvim -u ${tempDir}/nvim/init.lua
+				echo ${tempDir}
       '';
     };
   in {
