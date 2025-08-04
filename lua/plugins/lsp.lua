@@ -15,6 +15,9 @@ return {
     lspconfig.rust_analyzer.setup({
       capabilities = capabilities
     })
+    lspconfig.nixd.setup({
+      capabilities = capabilities
+    })
 
     for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
         local default_diagnostic_handler = vim.lsp.handlers[method]

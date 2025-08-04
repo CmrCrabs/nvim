@@ -16,3 +16,4 @@ require("lazy").setup("plugins")
 -- vim.cmd("colorscheme pywal")
 -- vim.cmd("call timer_start( 2000, { id -> execute( 'colorscheme pywal' ) }, { 'repeat': -1 } )")
 
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
