@@ -1,5 +1,5 @@
 {
-  description = "Neovim Nightly with custom config";
+  description = "miau";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
@@ -14,9 +14,8 @@
     flake-utils,
     ...
   }:
-  # flake-utils.lib.eachDefaultSystem (system:
-  let
-    system = "x86_64-linux";
+  flake-utils.lib.eachDefaultSystem (system: let
+    # system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
       overlays = [
@@ -39,6 +38,6 @@
       '';
     };
   in {
-    packages.${system}.default = nvimWrap;
-  };
+    packages.default = nvimWrap;
+  });
 }
