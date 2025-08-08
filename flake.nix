@@ -1,5 +1,5 @@
 {
-  description = "miau";
+  description = "neovimming";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
@@ -14,30 +14,24 @@
     flake-utils,
     ...
   }:
-  flake-utils.lib.eachDefaultSystem (system: let
-    # system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [
-        neovim-nightly.overlays.default
-      ];
-    };
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          neovim-nightly.overlays.default
+        ];
+      };
 
-    tempDir =
-      pkgs.runCommand "initFolder" {
-      } ''
-        mkdir -p $out
-	cp -r ${self}/config/nvim $out/
-      '';
-
-    nvimWrap = pkgs.writeShellApplication {
-      name = "nvimWrap";
-      runtimeInputs = [pkgs.neovim];
-      text = ''
-        nvim -u ${tempDir}/nvim/init.lua
-      '';
+      nvimWrap = import ./nvim-package.nix {inherit pkgs self;};
+    in {
+      packages.default = nvimWrap;
+    })
+    // {
+      overlays.default = final: prev: {
+        neovim = import ./nvim-package.nix {
+          pkgs = final;
+          self = self;
+        };
+      };
     };
-  in {
-    packages.default = nvimWrap;
-  });
 }
