@@ -21,8 +21,9 @@
           neovim-nightly.overlays.default
         ];
       };
+			nightly-neovim = neovim-nightly.packages.${system}.default;
 
-      nvimWrap = import ./nvim-package.nix {inherit pkgs self;};
+      nvimWrap = import ./nvim-package.nix {inherit pkgs self nightly-neovim;};
     in {
       packages.default = nvimWrap;
     })

@@ -1,4 +1,4 @@
-{ pkgs, self, ... }:
+{ pkgs, self, nightly-neovim, ... }:
 
 let
   tempDir = pkgs.runCommand "initFolder" {} ''
@@ -16,6 +16,7 @@ pkgs.writeShellApplication {
     vimPlugins.omnisharp-extended-lsp-nvim
     nixd
     tinymist
+		nightly-neovim
 
     ## formatters
     alejandra
